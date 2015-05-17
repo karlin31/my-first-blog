@@ -1,25 +1,37 @@
+	
 <html>
-	<head>
-		<title>  Awesome blog!!!</title>
-	</head>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaks }}</p>
+    </div>
+
 	<body>
-		<div>
+		<div class="page-header">
 			<h1>Carleen Calvo</h1>
 			<h3>Bachelor of Science in Computer Engineering</h3>
 			<h3>Pamantasan ng Lungsod ng Maynila</h3>
 
 		</div>
 		<div>
-    <h1><a href="/">Django Girls Blog</a></h1>
-</div>
+    		<h1><a href="/">Django Girls Blog</a></h1>
+		</div>
 
-{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaks }}</p>
-    </div>
-{% endfor %}
+			{% for post in posts %}
+    	<div>
+        	<p>published: {{ post.published_date }}</p>
+        	<a href="http://en.wikipedia.org/wiki/Django" class="external_link" id="link_to_wiki_page">
+        	<h1><a href="">{{ post.title }}</a></h1>
+        	<p>{{ post.text|linebreaks }}</p>
+    	</div>
+				{% endfor %}
 		<div>
 			<a href= "https://www.facebook.com/carleen.calvo">My Facebook Page</a>
 		</div>
@@ -29,4 +41,5 @@
 		<div>
 		
 	</body>
+	{% endblock %}
 </html>

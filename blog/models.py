@@ -1,5 +1,7 @@
 from django.db import models
-from django.utils import timezone
+from django.utils import 
+from django.shortcuts import render
+from .models import Post
 
 class Post(models.Model):
 	author = models.ForeignKey('auth.User')
@@ -7,7 +9,7 @@ class Post(models.Model):
 	text = models.TextField()
 	created_date = models.DateTimeField(
 			default=timezone.now)
-	published_Date = models.DateTimeField(
+	published_date = models.DateTimeField(
 			blank=True, null=True)
 
 	def publish(self):
